@@ -93,4 +93,8 @@ nav{
             width: 60px;
             height: 30px;
         }
+        .item {
+            width: 60px;
+            height: 90px;
+        }
     }

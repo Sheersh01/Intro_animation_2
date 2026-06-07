@@ -28,12 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const setInitialLinearLayout = () => {
         const items = document.querySelectorAll(".item");
-        const totalItemsWidth = (items.length - 1) * 10 + items[0].offsetWidth;
+        const gap = window.innerWidth <= 768 ? 4 : 10;
+        const totalItemsWidth = (items.length - 1) * gap + items[0].offsetWidth;
         const startX = (container.offsetWidth - totalItemsWidth) / 2;
 
         items.forEach((item, index) => {
             gsap.set(item, {
-                left: `${startX + index * 10}px`,
+                left: `${startX + index * gap}px`,
                 top: "150%",
                 rotation: 0,
             });
@@ -82,7 +83,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const setCircularLayout = () => {
         const items = document.querySelectorAll(".item");
         const angleIncrement = (2 * Math.PI) / itemsCount;
-        const radius = Math.min(container.offsetWidth, container.offsetHeight) / 5;
+        const radius = window.innerWidth <= 768 
+            ? Math.min(container.offsetWidth, container.offsetHeight) / 2.8 
+            : Math.min(container.offsetWidth, container.offsetHeight) / 5;
         const centerX = container.offsetWidth / 2;
         const centerY = container.offsetHeight / 2;
     
